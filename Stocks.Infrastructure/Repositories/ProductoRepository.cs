@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using Stocks.Domain.Models;
 using Stocks.Domain.Repositories;
 
@@ -13,14 +14,16 @@ namespace Stocks.Infrastructure.Repositories
             _mongoDatabase = mongoDatabase;
         }
 
-        public Task<bool> Adicionar(Producto entity)
+        public async Task<bool> Adicionar(Producto entity)
         {
-            throw new NotImplementedException();
+            await GetMongoCollection().InsertOneAsync(entity);
+
+            return true;
         }
 
         public async Task<Producto> Consultar(int id)
         {
-            return await GetMongoCollection().FindAsync<Producto>(item => item.IdProducto == id).FirstOrDefaultAsync();
+            return await GetMongoCollection().FindSync<Producto>(item => item.IdProducto == id).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Producto>> Consultar(string nombre)
@@ -33,9 +36,11 @@ namespace Stocks.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> Modificar(Producto entity)
+        public async  Task<bool> Modificar(Producto entity)
         {
-            throw new NotImplementedException();
+            await GetMongoCollection().ReplaceOneAsync(item => item.IdProducto == entity.IdProducto, entity);
+
+            return true;
         }
 
         private IMongoCollection<Producto> GetMongoCollection() => _mongoDatabase.GetCollection<Producto>(nameof(Producto));
