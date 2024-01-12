@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
 {
-    public class ReservarStockValidator : AbstractValidator<ReservarStockRequest>
+    public class ReponerStockValidator : AbstractValidator<ReservarStockRequest>
     {
-        public ReservarStockValidator()
+        public ReponerStockValidator()
         {
             RuleFor(item => item.IdProducto).GreaterThan(0).WithMessage("Debe especificar el código del producto");
             RuleFor(item => item.Cantidad).GreaterThan(0).WithMessage("La cantidad tiene que ser mayor que cero");

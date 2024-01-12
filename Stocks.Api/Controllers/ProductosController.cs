@@ -24,7 +24,15 @@ namespace Stocks.Api.Controllers
         }
 
         [HttpGet("reservar")]
-        public async Task<IActionResult> Consultar([FromQuery] ReservarStockRequest request)
+        public async Task<IActionResult> Reservar([FromQuery] ReservarStockRequest request)
+        {
+            var response = await _mediator.Send(request);
+
+            return Ok(response);
+        }
+
+        [HttpGet("reponer")]
+        public async Task<IActionResult> Reponer([FromQuery] ReponerStockRequest request)
         {
             var response = await _mediator.Send(request);
 
