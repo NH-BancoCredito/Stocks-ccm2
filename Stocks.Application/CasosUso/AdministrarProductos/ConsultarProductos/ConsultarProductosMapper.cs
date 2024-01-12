@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Venta.Domain.Models;
+using Stocks.Domain.Models;
 
-namespace Venta.Application.CasosUso.AdministrarProductos.ConsultarProductos
+namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
 {
     public class ConsultarProductosMapper: Profile
     {

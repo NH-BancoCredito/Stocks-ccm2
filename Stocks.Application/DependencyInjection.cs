@@ -7,9 +7,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Venta.Application.Common;
+using Stocks.Application.Common;
 
-namespace Venta.Application
+namespace Stocks.Application
 {
     public static class DependencyInjection
     {

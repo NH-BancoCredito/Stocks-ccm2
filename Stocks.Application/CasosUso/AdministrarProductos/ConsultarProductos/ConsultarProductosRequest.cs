@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Venta.Application.Common;
+using Stocks.Application.Common;
 
-namespace Venta.Application.CasosUso.AdministrarProductos.ConsultarProductos
+namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
 {
     public class ConsultarProductosRequest: IRequest<IResult>
     {

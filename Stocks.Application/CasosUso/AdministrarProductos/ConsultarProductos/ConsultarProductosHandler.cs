@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Venta.Application.Common;
-using Venta.Domain.Repositories;
+using Stocks.Application.Common;
+using Stocks.Domain.Repositories;
 
-namespace Venta.Application.CasosUso.AdministrarProductos.ConsultarProductos
+namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
 {
     public class ConsultarProductosHandler:
         IRequestHandler<ConsultarProductosRequest, IResult>

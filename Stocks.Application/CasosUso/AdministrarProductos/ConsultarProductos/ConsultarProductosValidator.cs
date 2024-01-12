@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Venta.Application.CasosUso.AdministrarProductos.ConsultarProductos
+namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
 {
     public class ConsultarProductosValidator: AbstractValidator<ConsultarProductosRequest>
     {

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +6,11 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using Venta.Domain.Repositories;
-using Venta.Infrastructure.Repositories;
-using Venta.Infrastructure.Repositories.Base;
+using Stocks.Domain.Repositories;
+using Stocks.Infrastructure.Repositories;
 
-namespace Venta.Infrastructure
+
+namespace Stocks.Infrastructure
 {
     public static class DependencyInjection
     {
@@ -20,9 +19,7 @@ namespace Venta.Infrastructure
             )
         {
 
-            services.AddDbContext<VentaDbContext>(
-                options=>options.UseSqlServer(connectionString)
-                );
+           
 
             services.AddRepositories();
         }
@@ -31,7 +28,7 @@ namespace Venta.Infrastructure
         {
             services.AddScoped<IProductoRepository, ProductoRepository>();
 
-            services.AddScoped<IVentaRepository, VentaRepository>();
+            
         }
     }
 }

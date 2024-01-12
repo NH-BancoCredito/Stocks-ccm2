@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Venta.Application.CasosUso.AdministrarProductos.ConsultarProductos;
+using Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos;
 
-namespace Venta.Api.Controllers
+namespace Stocks.Api.Controllers
 {
 
     [Route("api/[controller]")]

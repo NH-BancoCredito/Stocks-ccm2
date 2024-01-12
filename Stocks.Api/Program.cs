@@ -1,6 +1,6 @@
-using Venta.Api.Middleware;
-using Venta.Application;
-using Venta.Infrastructure;
+using Stocks.Api.Middleware;
+using Stocks.Application;
+using Stocks.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

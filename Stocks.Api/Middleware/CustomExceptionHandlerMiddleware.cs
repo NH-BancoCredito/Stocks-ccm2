@@ -2,9 +2,9 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Net;
-using Venta.Application.Common;
+using Stocks.Application.Common;
 
-namespace Venta.Api.Middleware
+namespace Stocks.Api.Middleware
 {
 
     public class CustomExceptionHandlerMiddleware

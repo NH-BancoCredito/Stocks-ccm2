@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Venta.Domain.Models;
+using Stocks.Domain.Models;
 
-namespace Venta.Domain.Repositories
+namespace Stocks.Domain.Repositories
 {
     public  interface IProductoRepository: IRepository
     {

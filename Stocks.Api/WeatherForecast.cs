@@ -1,4 +1,4 @@
-namespace Venta.Api
+namespace Stocks.Api
 {
     public class WeatherForecast
     {
