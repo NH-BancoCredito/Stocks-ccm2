@@ -25,8 +25,7 @@ namespace Stocks.Infrastructure
         }
 
         private static void AddDataBaseFactories(this IServiceCollection services, string connectionString)
-        {
-            //mongodb://127.0.0.1:27017/?retryWrites=true&loadBalanced=false&connectTimeoutMS=10000
+        {            
             services.AddSingleton(mongoDatabase =>
             {
                 var mongoClient = new MongoClient(connectionString);

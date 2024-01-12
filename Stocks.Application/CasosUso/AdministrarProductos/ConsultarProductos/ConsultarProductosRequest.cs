@@ -10,6 +10,7 @@ namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
 {
     public class ConsultarProductosRequest: IRequest<IResult>
     {
+        public int FiltroPorId { get; set; }
         public string FiltroPorNombre { get; set; } 
     }
 }
