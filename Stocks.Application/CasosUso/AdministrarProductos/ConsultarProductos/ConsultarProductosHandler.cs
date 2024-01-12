@@ -32,8 +32,8 @@ namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
             {
                
                 var datos = await _productoRepository.Consultar(request.FiltroPorId);
-                response = new SuccessResult<IEnumerable<ConsultaProducto>>(
-                        _mapper.Map<IEnumerable<ConsultaProducto>>(datos)
+                response = new SuccessResult<ConsultaProducto>(
+                        _mapper.Map<ConsultaProducto>(datos)
                         );
 
                 return response;
