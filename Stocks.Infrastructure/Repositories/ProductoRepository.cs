@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MongoDB.Driver;
 using Stocks.Domain.Models;
 using Stocks.Domain.Repositories;
 
@@ -10,7 +6,12 @@ namespace Stocks.Infrastructure.Repositories
 {
     public class ProductoRepository : IProductoRepository
     {
-       
+        private readonly IMongoDatabase _mongoDatabase;
+
+        public ProductoRepository(IMongoDatabase mongoDatabase)
+        {
+            _mongoDatabase = mongoDatabase;
+        }
 
         public Task<bool> Adicionar(Producto entity)
         {
@@ -19,7 +20,7 @@ namespace Stocks.Infrastructure.Repositories
 
         public async Task<Producto> Consultar(int id)
         {
-            throw new NotImplementedException();
+            return await GetMongoCollection().FindAsync<Producto>(item => item.IdProducto == id).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Producto>> Consultar(string nombre)
@@ -36,5 +37,7 @@ namespace Stocks.Infrastructure.Repositories
         {
             throw new NotImplementedException();
         }
+
+        private IMongoCollection<Producto> GetMongoCollection() => _mongoDatabase.GetCollection<Producto>(nameof(Producto));
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Stocks.Domain.Repositories;
 using Stocks.Infrastructure.Repositories;
+using MongoDB.Driver;
 
 
 namespace Stocks.Infrastructure
@@ -19,9 +20,19 @@ namespace Stocks.Infrastructure
             )
         {
 
-           
-
+            services.AddDataBaseFactories(connectionString);
             services.AddRepositories();
+        }
+
+        private static void AddDataBaseFactories(this IServiceCollection services, string connectionString)
+        {
+            //mongodb://127.0.0.1:27017/?retryWrites=true&loadBalanced=false&connectTimeoutMS=10000
+            services.AddSingleton(mongoDatabase =>
+            {
+                var mongoClient = new MongoClient(connectionString);
+                return mongoClient.GetDatabase("db-productos-stocks");
+            });
+
         }
 
         private static void AddRepositories(this IServiceCollection services)
