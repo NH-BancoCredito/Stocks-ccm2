@@ -22,5 +22,13 @@ namespace Stocks.Api.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("reservar")]
+        public async Task<IActionResult> Consultar([FromQuery] ReservarStockRequest request)
+        {
+            var response = await _mediator.Send(request);
+
+            return Ok(response);
+        }
     }
 }
