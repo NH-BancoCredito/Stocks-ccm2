@@ -7,6 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Stocks.Application.Common;
 using Stocks.Domain.Repositories;
+using Stocks.Domain.Service.Events;
+using MongoDB.Bson.IO;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
 {
@@ -15,11 +19,14 @@ namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
     {
         private readonly IProductoRepository _productoRepository;
         private readonly IMapper _mapper;
+        private readonly IEventSender _eventSender;
 
-        public ReponerStockHandler(IProductoRepository productoRepository, IMapper mapper)
+        public ReponerStockHandler(IProductoRepository productoRepository, IMapper mapper
+            , IEventSender eventSender)
         {
             _productoRepository = productoRepository;
             _mapper = mapper;
+            _eventSender = eventSender;
         }
        
 
@@ -35,6 +42,7 @@ namespace Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos
                 var actualizar =  await _productoRepository.Modificar(producto);
                 if (actualizar)
                 {
+                    await _eventSender.PublishAsync("stocks", JsonSerializer.Serialize(producto), cancellationToken);
                     //Publicar la información en la cola de Kafka
                     return new SuccessResult();
                 }

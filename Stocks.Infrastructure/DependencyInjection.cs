@@ -52,7 +52,7 @@ namespace Stocks.Infrastructure
             var config = new ProducerConfig
             {
                 Acks = Acks.Leader,
-                BootstrapServers = "127.0.0.1:9093",
+                BootstrapServers = "127.0.0.1:9092",
                 ClientId = Dns.GetHostName(),
             };
 
