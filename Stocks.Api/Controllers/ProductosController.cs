@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Stocks.Application.CasosUso.AdministrarProductos.ConsultarProductos;
+using Stocks.Application.CasosUso.AdministrarProductos.RegistrarProductos;
 
 namespace Stocks.Api.Controllers
 {
@@ -17,6 +18,14 @@ namespace Stocks.Api.Controllers
 
         [HttpGet("consultar")]
         public async Task<IActionResult> Consultar([FromQuery] ConsultarProductosRequest request)
+        {
+            var response = await _mediator.Send(request);
+
+            return Ok(response);
+        }
+
+        [HttpPost("registrar")]
+        public async Task<IActionResult> Registrar([FromBody] RegistrarProductosRequest request)
         {
             var response = await _mediator.Send(request);
 
