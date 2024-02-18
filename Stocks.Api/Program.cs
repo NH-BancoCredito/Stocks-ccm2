@@ -1,3 +1,4 @@
+using Steeltoe.Extensions.Configuration.ConfigServer;
 using Stocks.Api.Middleware;
 using Stocks.Application;
 using Stocks.Infrastructure;
@@ -5,6 +6,13 @@ using Stocks.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+    builder.Configuration.AddConfigServer(
+    LoggerFactory.Create(builder =>
+    {
+        builder.AddConsole();
+    })
+    );
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -15,8 +23,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
 
 //Capa de infra
-var connectionString = builder.Configuration.GetConnectionString("dbStocks-cnx");
+//var connectionString = builder.Configuration.GetConnectionString("dbStocks-cnx");
+var connectionString = builder.Configuration["dbStocks-cnx"];
 builder.Services.AddInfraestructure(connectionString);
+
 
 
 var app = builder.Build();
